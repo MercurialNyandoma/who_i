@@ -3,19 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Mini App</title>
+    <title>Telegram Login</title>
     <script async src="https://telegram.org/js/telegram-widget.js?7"
-            data-telegram-login="nodessupakov_bot" 
+            data-telegram-login="nodessupakov_bot"
             data-size="large" 
             data-radius="10"
-            data-auth-url="https://whoii.vercel.app/auth/telegram">
+            data-onauth="onTelegramAuth">
     </script>
 </head>
 <body>
-    <h1>Welcome to my Telegram Mini App!</h1>
-    <p>This is a simple web app inside Telegram.</p>
-    <!-- Telegram Login Button -->
-    <button id="loginBtn">Login with Telegram</button>
+    <h1>Telegram Login</h1>
+    <p>Click the button below to log in using your Telegram account.</p>
 
+    <script>
+        function onTelegramAuth(user) {
+            // Здесь вы получаете объект user, который содержит данные пользователя
+            console.log(user);
+
+            // Пример использования данных
+            alert(`Hello, ${user.first_name}!`);
+
+            // Можно перенаправить пользователя на dashboard
+            window.location.href = '/dashboard';
+        }
+    </script>
 </body>
 </html>
